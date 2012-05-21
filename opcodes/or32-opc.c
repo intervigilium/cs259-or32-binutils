@@ -283,6 +283,7 @@ const struct or32_opcode or32_opcodes[] = {
   { "l.or",       "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 ---- 0x4",  EF(l_or), 0, it_arith },
   { "l.xor",      "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 ---- 0x5",  EF(l_xor), 0, it_arith },
   { "l.mul",      "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-11 ---- 0x6",  EF(l_mul), 0, it_arith },
+  { "l.addx",     "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 ---- 0x7",  EF(l_addx), OR32_W_FLAG, it_arith },
 
   { "l.sll",      "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 00-- 0x8",  EF(l_sll), 0, it_shift },
   { "l.srl",      "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 01-- 0x8",  EF(l_srl), 0, it_shift },
@@ -1071,4 +1072,3 @@ disassemble_insn (unsigned long insn)
 {
   return disassemble_index (insn, insn_decode (insn));
 }
-

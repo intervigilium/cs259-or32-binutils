@@ -533,6 +533,11 @@ static const CGEN_IBASE openrisc_cgen_insn_table[MAX_INSNS] =
     OPENRISC_INSN_L_ADDI, "l-addi", "l.addi", 32,
     { 0, { { { (1<<MACH_BASE), 0 } } } }
   },
+/* l.addx $rD,$rA,$rB */
+  {
+    OPENRISC_INSN_L_ADDX, "l-addx", "l.addx", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
+  },
 /* l.sub $rD,$rA,$rB */
   {
     OPENRISC_INSN_L_SUB, "l-sub", "l.sub", 32,
@@ -1039,4 +1044,3 @@ openrisc_cgen_cpu_close (CGEN_CPU_DESC cd)
 
   free (cd);
 }
-

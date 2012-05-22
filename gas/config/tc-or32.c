@@ -285,7 +285,7 @@ parse_operand (char        *s,
 #if DEBUG
   printf ("  PROCESS NEW OPERAND(%s): %s, %s\n", s,
 	  opt ? "optional" : "not optional",
-	  is_reg ? "register", "not register");
+	  is_reg ? "register" : "not register");
 #endif
 
   input_line_pointer = s;

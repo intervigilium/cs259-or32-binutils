@@ -38,7 +38,8 @@
 #define REGISTER_PREFIX   '%'
 #endif
 
-#define PUF_KEY_MASK 0x03fffff0
+#define PUF_KEY_3OP_MASK 0x03fffff0
+#define PUF_KEY_IMM_MASK 0x03ffffff
 
 /* Make it easier to clone this machine desc into another one.  */
 #define machine_opcode  or32_opcode
@@ -440,9 +441,19 @@ machine_ip (char *str)
           if (*s == '\0')
             {
               /* Add hax for PUF instruction scrambling here */
-              if (strcmp(insn->name, "l.addx") == 0)
+              if (strcmp(insn->name, "l.addx") == 0 ||
+                  strcmp(insn->name, "l.subx") == 0 ||
+                  strcmp(insn->name, "l.mulx") == 0 ||
+                  strcmp(insn->name, "l.divx") == 0)
                 {
-                  opcode ^= (cpu_puf_key & PUF_KEY_MASK);
+                  opcode ^= (cpu_puf_key & PUF_KEY_3OP_MASK);
+                }
+              if (strcmp(insn->name, "l.addix") == 0 ||
+                  strcmp(insn->name, "l.subix") == 0 ||
+                  strcmp(insn->name, "l.mulix") == 0 ||
+                  strcmp(insn->name, "l.divix") == 0)
+                {
+                  opcode ^= (cpu_puf_key & PUF_KEY_IMM_MASK);
                 }
               /* We are truly done.  */
               the_insn.opcode = opcode;

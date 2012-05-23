@@ -533,11 +533,6 @@ static const CGEN_IBASE openrisc_cgen_insn_table[MAX_INSNS] =
     OPENRISC_INSN_L_ADDI, "l-addi", "l.addi", 32,
     { 0, { { { (1<<MACH_BASE), 0 } } } }
   },
-/* l.addx $rD,$rA,$rB */
-  {
-    OPENRISC_INSN_L_ADDX, "l-addx", "l.addx", 32,
-    { 0, { { { (1<<MACH_BASE), 0 } } } }
-  },
 /* l.sub $rD,$rA,$rB */
   {
     OPENRISC_INSN_L_SUB, "l-sub", "l.sub", 32,
@@ -697,6 +692,46 @@ static const CGEN_IBASE openrisc_cgen_insn_table[MAX_INSNS] =
   {
     OPENRISC_INSN_L_SFNEI, "l-sfnei", "l.sfnei", 32,
     { 0|A(DELAY_SLOT), { { { (1<<MACH_BASE), 0 } } } }
+  },
+/* l.addx $rD,$rA,$rB */
+  {
+    OPENRISC_INSN_L_ADDX, "l-addx", "l.addx", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
+  },
+/* l.subx $rD,$rA,$rB */
+  {
+    OPENRISC_INSN_L_SUBX, "l-subx", "l.subx", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
+  },
+/* l.mulx $rD,$rA,$rB */
+  {
+    OPENRISC_INSN_L_MULX, "l-mulx", "l.mulx", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
+  },
+/* l.divx $rD,$rA,$rB */
+  {
+    OPENRISC_INSN_L_DIVX, "l-divx", "l.divx", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
+  },
+/* l.addix $rD,$rA,$rB */
+  {
+    OPENRISC_INSN_L_ADDIX, "l-addix", "l.addix", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
+  },
+/* l.subix $rD,$rA,$lo16 */
+  {
+    OPENRISC_INSN_L_SUBIX, "l-subix", "l.subix", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
+  },
+/* l.mulix $rD,$rA,$rB */
+  {
+    OPENRISC_INSN_L_MULIX, "l-mulix", "l.mulix", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
+  },
+/* l.divix $rD,$rA,$rB */
+  {
+    OPENRISC_INSN_L_DIVIX, "l-divix", "l.divix", 32,
+    { 0, { { { (1<<MACH_BASE), 0 } } } }
   },
 };
 

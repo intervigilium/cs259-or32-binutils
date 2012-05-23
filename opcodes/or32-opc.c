@@ -283,7 +283,6 @@ const struct or32_opcode or32_opcodes[] = {
   { "l.or",       "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 ---- 0x4",  EF(l_or), 0, it_arith },
   { "l.xor",      "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 ---- 0x5",  EF(l_xor), 0, it_arith },
   { "l.mul",      "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-11 ---- 0x6",  EF(l_mul), 0, it_arith },
-  { "l.addx",     "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 ---- 0x7",  EF(l_addx), OR32_W_FLAG, it_arith },
 
   { "l.sll",      "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 00-- 0x8",  EF(l_sll), 0, it_shift },
   { "l.srl",      "rD,rA,rB",    "11 0x8  DDDDD AAAAA BBBB B-00 01-- 0x8",  EF(l_srl), 0, it_shift },
@@ -313,10 +312,23 @@ const struct or32_opcode or32_opcodes[] = {
   { "l.sflts",    "rA,rB",       "11 0x9  01100 AAAAA BBBB B--- ---- ----", EF(l_sflts), OR32_W_FLAG, it_compare },
   { "l.sfles",    "rA,rB",       "11 0x9  01101 AAAAA BBBB B--- ---- ----", EF(l_sfles), OR32_W_FLAG, it_compare },
 
+  /* custom PUF-secured instructions */
+  { "l.addx",     "rD,rA,rB",    "11 0xA  DDDDD AAAAA BBBB B-00 ---- 0x0",  EF(l_addx), OR32_W_FLAG, it_arith },
+  { "l.subx",     "rD,rA,rB",    "11 0xA  DDDDD AAAAA BBBB B-00 ---- 0x1",  EF(l_subx), 0, it_arith },
+  { "l.mulx",     "rD,rA,rB",    "11 0xA  DDDDD AAAAA BBBB B-00 ---- 0x2",  EF(l_mulx), 0, it_arith },
+  { "l.divx",     "rD,rA,rB",    "11 0xA  DDDDD AAAAA BBBB B-00 ---- 0x3",  EF(l_divx), 0, it_arith },
+
+  { "l.addix",    "rD,rA,I",     "11 0xC  DDDDD AAAAA IIII IIII IIII IIII", EF(l_addix), OR32_W_FLAG, it_arith },
+  { "l.subix",    "rD,rA,I",     "11 0xD  DDDDD AAAAA IIII IIII IIII IIII", EF(l_subix), OR32_W_FLAG, it_arith },
+  { "l.mulix",    "rD,rA,I",     "11 0xE  DDDDD AAAAA IIII IIII IIII IIII", EF(l_mulix), OR32_W_FLAG, it_arith },
+  { "l.divix",    "rD,rA,I",     "11 0xF  DDDDD AAAAA IIII IIII IIII IIII", EF(l_divix), OR32_W_FLAG, it_arith },
+
+  /*
   { "l.cust5",    "rD,rA,rB,L,K","11 0xC  DDDDD AAAAA BBBB BLLL LLLK KKKK", EFI, 0, it_unknown },
   { "l.cust6",    "",            "11 0xD  ----- ----- ---- ---- ---- ----", EFI, 0, it_unknown },
   { "l.cust7",    "",            "11 0xE  ----- ----- ---- ---- ---- ----", EFI, 0, it_unknown },
   { "l.cust8",    "",            "11 0xF  ----- ----- ---- ---- ---- ----", EFI, 0, it_unknown },
+  */
 
   /* This section should not be defined in or1ksim, since it contains duplicates,
      which would cause machine builder to complain.  */
